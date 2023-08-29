@@ -1,3 +1,5 @@
+import prettierFormat_formatCode from "./javaParser.js";
+
 var styleElement = document.createElement("style");
 styleElement.textContent = `
 .format-button {
@@ -23,11 +25,7 @@ styleElement.textContent = `
 
 document.head.appendChild(styleElement);
 
-const formatCode = () => {
-  var editorElements = document.getElementsByClassName("ace_editor");
-  var editor = ace.edit(editorElements[0]);
-  var code = editor.getValue();
-
+const formatCppCode = (editor, code) => {
   var formattedCode = js_beautify(code, {
     indent_size: 4,
     brace_style: "expand",
@@ -37,16 +35,72 @@ const formatCode = () => {
   editor.clearSelection();
 };
 
+const showNotification = () => {
+  if ("Notification" in window) {
+    Notification.requestPermission().then(function (permission) {
+      if (permission === "granted") {
+        var notification = new Notification(
+          "Sorry, Unsupported Programming Language!",
+          {
+            body: "We only support C++ or Java as of date.",
+            icon: "icon.png",
+          }
+        );
+      } else {
+        console.log("Notification permission denied");
+      }
+    });
+  }
+};
+
+const formatJavaCode = (editor, code) => {
+  var formattedCode = prettierFormat_formatCode.formatCode(code, {
+    printWidth: 200,
+    tabWidth: 4,
+  });
+  editor.setValue(formattedCode);
+  editor.clearSelection();
+};
+
+const formatCode = (editor) => {
+  //Gets the Ace Editor of GFG Portal
+  var editorElements = document.getElementsByClassName("ace_editor");
+  var editor = ace.edit(editorElements[0]);
+  var code = editor.getValue();
+
+  // Gets the language selected by the User
+  const dropdown = document.querySelector(".problems_language_dropdown__DgjFb");
+  const selectedOptionText = dropdown.querySelector(
+    ".active.selected.item .text"
+  ).textContent;
+
+  if (selectedOptionText.startsWith("C++")) {
+    formatCppCode(editor, code);
+  } else if (
+    selectedOptionText.startsWith("Java") &&
+    !selectedOptionText.startsWith("Javascript")
+  ) {
+    formatJavaCode(editor, code);
+  } else {
+    // Show Unsupported Programming Language Notification
+    showNotification();
+  }
+};
+
 setTimeout(() => {
+  // Create Button
   var button = document.createElement("button");
   button.textContent = "Format";
   button.className = "format-button";
 
+  // Adds the button to the right side of the editor
   var sidebar = document.querySelector(".problems_menu_wrap_content__BwiWt");
   sidebar.appendChild(button);
 
   // Calls the formatCode() function
-  button.addEventListener("click", formatCode);
+  button.addEventListener("click", function () {
+    formatCode();
+  });
 
   document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.shiftKey && event.key === "F") {
