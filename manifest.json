@@ -1,0 +1,33 @@
+{
+    "name": "GeeksforGeeks Code Formatter",
+    "version": "1.0",
+    "manifest_version": 3,
+    "description": "Code formatter for GeeksforGeeks.",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "insertScript.js"
+            ],
+            "matches": [
+                "https://practice.geeksforgeeks.org/*"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "contentScript.js",
+                "cppParser.js",
+                "javaParser.js"
+            ],
+            "matches": [
+                "https://practice.geeksforgeeks.org/*"
+            ]
+        }
+    ]
+}
