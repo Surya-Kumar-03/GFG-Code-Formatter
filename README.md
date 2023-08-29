@@ -13,9 +13,7 @@ Currently, the extension offers support for the following languages, with future
 - Java
 
 ## Demo
-
-
-
+![Demo](https://github.com/Surya-Kumar-03/GFG-Code-Formatter/assets/89148170/76e3f49b-a1ba-4d61-a8bd-48a598e02693)
 
 ## Authors
 
