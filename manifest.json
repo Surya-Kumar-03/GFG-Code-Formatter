@@ -2,7 +2,7 @@
     "name": "GeeksforGeeks Code Formatter",
     "version": "1.0",
     "manifest_version": 3,
-    "description": "Code formatter for GeeksforGeeks.",
+    "description": "GeeksforGeeks Code Formatter is a browser extension that enhances the coding experience on the GeeksforGeeks platform. It automatically adds a 'Format' button to the coding environment, allowing users to easily format their code for better readability. The extension integrates features like code indentation, formatting rules, and customizations, helping programmers present their code in a consistent and organized manner.",
     "icons": {
         "16": "icon.png",
         "48": "icon.png",
