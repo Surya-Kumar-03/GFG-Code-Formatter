@@ -61,5 +61,5 @@ To start contributing, follow these steps:
 3. **Pull Request**: Push your branch to your forked repository and create a pull request to the original repository's `main` branch. Include a detailed description of your changes in the pull request.
 
 
-Thank you for being a part of our project and helping us make it better! Your contributions are valuable in making this project successful and impactful.
+Thank you for being a part of this project and helping improve it! Your contributions are valuable in making this project successful and impactful.
 
