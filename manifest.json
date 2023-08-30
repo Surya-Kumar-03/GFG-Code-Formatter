@@ -3,6 +3,7 @@
     "version": "1.0",
     "manifest_version": 3,
     "description": "Enhance code readability with code formatting on GeeksforGeeks Practise Platform.",
+    "default_locale": "en",
     "icons": {
         "16": "icon.png",
         "48": "icon.png",
